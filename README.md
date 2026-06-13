@@ -10,17 +10,16 @@
   <img src="Images/main_banner.jpg" width="100%">
 </p>
 
-
 _Analyze sales, inventory, and purchasing data to answer 8 business questions and turn raw data into clear insights._
 
-* 🎯 Business Question: Which products, territories, and time periods drive the most sales — and where are the risks?
-* 🏭 Domain: Manufacturing & Retail
-* 🛠️ Tools: SQL (Google BigQuery)
+- 🎯 **Business Question:** Which products, territories, and time periods drive the most sales — and where are the risks?
+- 🏭 **Domain:** Manufacturing & Retail
+- 🛠️ **Tools:** SQL (Google BigQuery)
 
 👤 Author: Bạch Minh Nam
+📅 Date: 2025-10-07
 
-📅 Date: 2025-12-07
-
+---
 
 ## 📌 Overview
 
@@ -76,12 +75,14 @@ To answer the 8 business questions in this project, **8 tables** from the `Sales
 
 ## 🔎 Query Repository
 
-Below are all 8 queries with their logic and a sample of the results returned in BigQuery.
+Below are all 8 queries with their business context, SQL code, output, and observations.
 
 <details>
 <summary><b>Query 1: Sales Volume L12M</b> (Click to expand)</summary>
 
 *Question: Calc Quantity of items, Sales value & Order quantity by each Subcategory in L12M.*
+
+*Tracking the last 12 months of sales by subcategory helps the business spot which product lines are growing or declining in real time — so inventory and marketing budgets can be adjusted before it's too late.*
 
 ```sql
 WITH
@@ -119,8 +120,12 @@ FROM sales_in_L12M
 GROUP BY period, product_subcategory
 ORDER BY period DESC, product_subcategory;
 ```
+
 **📊 Actual Output:**
 ![Query 1 Output](Images/Query_1_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -128,6 +133,8 @@ ORDER BY period DESC, product_subcategory;
 <summary><b>Query 2: YoY Growth Rate by Category</b> (Click to expand)</summary>
 
 *Question: Calc % YoY growth rate by SubCategory & release top 3 cat with highest grow rate. Can use metric: quantity_item. Round results to 2 decimal.*
+
+*Identifying the top 3 fastest-growing subcategories gives leadership a clear signal of where demand is heading — useful for production planning and deciding where to invest next.*
 
 ```sql
 WITH
@@ -168,8 +175,12 @@ qty_growth AS(
 SELECT subcate_name Name, qty_item, prev_qty_item prv_qty, qty_diff
 FROM qty_growth WHERE growth_rank <= 3 ORDER BY qty_diff DESC;
 ```
+
 **📊 Actual Output:**
 ![Query 2 Output](Images/Query_2_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -177,6 +188,8 @@ FROM qty_growth WHERE growth_rank <= 3 ORDER BY qty_diff DESC;
 <summary><b>Query 3: Top Territories by Year</b> (Click to expand)</summary>
 
 *Question: Ranking Top 3 TeritoryID with biggest Order quantity of every year. If there's TerritoryID with same quantity in a year, do not skip the rank number.*
+
+*Knowing which territories consistently drive the most orders helps the sales team prioritize regional resources and flag underperforming areas that may need support.*
 
 ```sql
 WITH 
@@ -198,8 +211,12 @@ WITH
   )
 SELECT * FROM ranking_order_quantity WHERE rk <= 3 ORDER BY yr DESC;
 ```
+
 **📊 Actual Output:**
 ![Query 3 Output](Images/Query_3_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -207,6 +224,8 @@ SELECT * FROM ranking_order_quantity WHERE rk <= 3 ORDER BY yr DESC;
 <summary><b>Query 4: Seasonal Discount Efficiency</b> (Click to expand)</summary>
 
 *Question: Calc Total Discount Cost belongs to Seasonal Discount for each SubCategory.*
+
+*Calculating the total cost of seasonal discounts per subcategory lets the finance team evaluate whether the promotions are worth the margin loss — and which categories are eating the most discount budget.*
 
 ```sql
 WITH
@@ -230,8 +249,12 @@ WITH
 SELECT year, subcate_name, SUM(discount_cost) total_cost
 FROM calculated_discount_cost GROUP BY year, subcate_name ORDER BY year;
 ```
+
 **📊 Actual Output:**
 ![Query 4 Output](Images/Query_4_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -239,6 +262,8 @@ FROM calculated_discount_cost GROUP BY year, subcate_name ORDER BY year;
 <summary><b>Query 5: Cohort Retention Rate</b> (Click to expand)</summary>
 
 *Question: Retention rate of Customer in 2014 with status of Successfully Shipped (Cohort Analysis).*
+
+*Cohort retention shows exactly when customers stop coming back after their first purchase — giving the CRM team a window to step in with re-engagement campaigns before churn becomes permanent.*
 
 ```sql
 WITH successful_order AS (
@@ -263,8 +288,12 @@ find_month_diff AS (
 SELECT month_join, CONCAT('M-',month_diff_num) month_diff, COUNT(customer_id) customer_count
 FROM find_month_diff GROUP BY month_join, CONCAT('M-',month_diff_num) ORDER BY month_join, month_diff;
 ```
+
 **📊 Actual Output:**
 ![Query 5 Output](Images/Query_5_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -272,6 +301,8 @@ FROM find_month_diff GROUP BY month_join, CONCAT('M-',month_diff_num) ORDER BY m
 <summary><b>Query 6: Stock Trend MoM</b> (Click to expand)</summary>
 
 *Question: Trend of Stock level & MoM diff % by all product in 2011. If %gr rate is null then 0. Round to 1 decimal.*
+
+*Month-over-month stock changes reveal whether inventory is building up or running low for each product — helping the warehouse team avoid both overstock and stockout situations.*
 
 ```sql
 WITH
@@ -294,8 +325,12 @@ FROM sum_stock_qty a
 LEFT JOIN sum_stock_qty b ON a.product_name = b.product_name AND a.mth = b.mth + 1 
 ORDER BY product_name, a.mth DESC;
 ```
+
 **📊 Actual Output:**
 ![Query 6 Output](Images/Query_6_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -303,6 +338,8 @@ ORDER BY product_name, a.mth DESC;
 <summary><b>Query 7: Stock-to-Sales Ratio</b> (Click to expand)</summary>
 
 *Question: Calc Ratio of Stock / Sales in 2011 by product name, by month. Order results by month desc, ratio desc. Round Ratio to 1 decimal.*
+
+*A high stock-to-sales ratio means the company is holding more inventory than it's selling — tying up cash. This query flags which products need faster turnover or reduced production.*
 
 ```sql
 WITH 
@@ -328,8 +365,12 @@ FROM sales_2011 sa
 LEFT JOIN stock_2011 st ON sa.mth = st.mth AND sa.productID = st.productID
 ORDER BY 1 DESC, 7 DESC;
 ```
+
 **📊 Actual Output:**
 ![Query 7 Output](Images/Query_7_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
@@ -337,6 +378,8 @@ ORDER BY 1 DESC, 7 DESC;
 <summary><b>Query 8: Pending Orders Breakdown</b> (Click to expand)</summary>
 
 *Question: No of order and value at Pending status in 2014.*
+
+*Pending purchase orders represent committed but undelivered spend — tracking their total value helps the procurement team manage cash flow and follow up with suppliers before delays impact production.*
 
 ```sql
 SELECT
@@ -349,8 +392,12 @@ LEFT JOIN `adventureworks2019.Purchasing.PurchaseOrderHeader` header
 WHERE EXTRACT(YEAR FROM header.ModifiedDate) = 2014 AND Status = 1
 GROUP BY 1,2;
 ```
+
 **📊 Actual Output:**
 ![Query 8 Output](Images/Query_8_Output.png)
+
+**💡 Observations:**
+> _(To be updated after output review)_
 
 </details>
 
