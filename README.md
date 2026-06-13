@@ -32,11 +32,11 @@ This project uses SQL to analyze sales, inventory, and purchasing data from Adve
 
 ### 📑 Table of Contents
 
-- [📌 Overview](#1-overview)
-- [📂 Dataset](#2-dataset)
-- [🔎 Query Repository](#3-full-query-repository)
-- [🗂️ Project Structure](#4-project-structure)
-- [🚀 Setup Instructions](#5-setup-instructions)
+- [📌 Overview](#-overview)
+- [📂 Dataset](#-dataset)
+- [🔎 Query Repository](#-query-repository)
+- [🗂️ Project Structure](#️-project-structure)
+- [🚀 Setup Instructions](#-setup-instructions)
 
 ---
 
