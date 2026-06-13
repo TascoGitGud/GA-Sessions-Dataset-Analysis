@@ -8,7 +8,7 @@
 
 ## 1. Overview
 
-The primary objective of this repository is to demonstrate advanced SQL capabilities in solving complex business problems regarding **Sales Performance, Customer Retention, and Inventory Optimization**.
+This project main goal is to demonstrate advanced SQL capabilities in solving complex business problems for AdventureWorld dataset.
 
 ### Table of Contents
 
