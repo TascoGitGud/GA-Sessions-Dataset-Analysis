@@ -13,7 +13,7 @@
 
 ## 1. Overview
 
-This project main goal is to demonstrate advanced SQL capabilities in solving complex business problems for AdventureWorld dataset.
+This project main goal is to demonstrate advanced SQL capabilities in solving complex business problems for **AdventureWorld dataset**.
 
 ### Table of Contents
 
@@ -94,7 +94,7 @@ GROUP BY period, product_subcategory
 ORDER BY period DESC, product_subcategory;
 ```
 **Actual Output:**
-![Query 1 Output](documents/q1.png)
+![Query 1 Output](Images/Query 1 Output.jpg)
 
 </details>
 
