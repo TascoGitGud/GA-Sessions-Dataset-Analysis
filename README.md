@@ -126,7 +126,7 @@ ORDER BY total_sales DESC, product_subcategory;
 
 *💡 Observations:*
 
-_Road Bikes, Touring Bikes, and Mountain Bikes consistently dominate both revenue and order volume across all months — with Road Bikes peaking at $2.1M in Mar 2014 alone._
+> _Road Bikes, Touring Bikes, and Mountain Bikes consistently dominate both revenue and order volume across all months — with Road Bikes peaking at $2.1M in Mar 2014 alone._
 
 </details>
 
@@ -182,7 +182,7 @@ FROM qty_growth WHERE growth_rank <= 3 ORDER BY qty_diff DESC;
 
 **💡 Observations:**
 
-_Mountain Frames (+521%), Socks (+421%), and Road Frames (+389%) are the top 3 fastest-growing subcategories YoY._
+> _Mountain Frames (+521%), Socks (+421%), and Road Frames (+389%) are the top 3 fastest-growing subcategories YoY._
 
 </details>
 
@@ -219,7 +219,7 @@ SELECT * FROM ranking_order_quantity WHERE rk <= 3 ORDER BY yr DESC;
 
 **💡 Observations:**
 
-_Territory 4 ranked #1 every year from 2011–2014, with Territory 6 and Territory 1 consistently holding #2 and #3_
+> _Territory 4 ranked #1 every year from 2011–2014, with Territory 6 and Territory 1 consistently holding #2 and #3_
 
 </details>
 
@@ -258,7 +258,7 @@ FROM calculated_discount_cost GROUP BY year, subcate_name ORDER BY year;
 
 **💡 Observations:**
 
-_Helmets is the only subcategory receiving seasonal discounts, with discount cost doubling from $828 in 2012 to $1,606 in 2013._
+> _Helmets is the only subcategory receiving seasonal discounts, with discount cost doubling from $828 in 2012 to $1,606 in 2013._
 
 </details>
 
@@ -298,7 +298,7 @@ FROM find_month_diff GROUP BY month_join, CONCAT('M-',month_diff_num) ORDER BY m
 
 **💡 Observations:**
 
-_Retention drops sharply after the first month — cohort 1 went from 2,076 customers at M-0 down to just 78 at M-1, a ~96% drop-off. Most cohorts follow the same pattern_
+> _Retention drops sharply after the first month — cohort 1 went from 2,076 customers at M-0 down to just 78 at M-1, a ~96% drop-off. Most cohorts follow the same pattern_
 
 </details>
 
@@ -328,7 +328,7 @@ SELECT
   IFNULL(ROUND((a.stock_qty / b.stock_qty - 1) *100.0,1), 0) diff
 FROM sum_stock_qty a
 LEFT JOIN sum_stock_qty b ON a.product_name = b.product_name AND a.mth = b.mth + 1 
-ORDER BY product_name, a.mth DESC;
+ORDER BY a.stock_qty DESC;
 ```
 
 **📊 Actual Output:**
