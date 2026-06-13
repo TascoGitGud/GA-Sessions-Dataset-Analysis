@@ -126,7 +126,7 @@ ORDER BY total_sales DESC, product_subcategory;
 
 *💡 Observations:*
 
-_Road Bikes, Touring Bikes, and Mountain Bikes consistently dominate both revenue and order volume across all months — with Road Bikes peaking at $2.1M in Mar 2014 alone. These 3 subcategories are clearly the core revenue drivers of the business and should be the top priority for inventory planning and sales investment._
+_Road Bikes, Touring Bikes, and Mountain Bikes consistently dominate both revenue and order volume across all months — with Road Bikes peaking at $2.1M in Mar 2014 alone._
 
 </details>
 
@@ -181,7 +181,8 @@ FROM qty_growth WHERE growth_rank <= 3 ORDER BY qty_diff DESC;
 ![Query 2 Output](Images/Query_2_Output.png)
 
 **💡 Observations:**
-> _(To be updated after output review)_
+
+_Mountain Frames (+521%), Socks (+421%), and Road Frames (+389%) are the top 3 fastest-growing subcategories YoY._
 
 </details>
 
