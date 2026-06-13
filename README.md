@@ -12,6 +12,7 @@
 
 
 🚲 Bicycle Manufacturer Performance Analysis | SQL
+
 Analyze sales, inventory, and purchasing data to answer 8 business questions and turn raw data into clear insights.
 
 * 🎯 Business Question: Which products, territories, and time periods drive the most sales — and where are the risks?
