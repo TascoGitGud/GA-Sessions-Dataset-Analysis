@@ -20,6 +20,7 @@
 - The goal is to turn raw transactional and operational data into clear, actionable insights for the business
 
 **Main business question:**
+
 This project uses SQL to analyze sales, inventory, and purchasing data from AdventureWorks to:
 - Identify which product categories, territories, and time periods drive the most sales
 - Evaluate how discounts, customer retention, and stock levels affect overall business performance
