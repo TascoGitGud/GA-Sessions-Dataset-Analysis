@@ -17,6 +17,7 @@ _Analyze sales, inventory, and purchasing data to answer 8 business questions an
 - 🛠️ **Tools:** SQL (Google BigQuery)
 
 👤 Author: Bạch Minh Nam
+
 📅 Date: 2025-10-07
 
 ---
@@ -335,7 +336,7 @@ ORDER BY a.stock_qty DESC;
 ![Query 6 Output](Images/Query_06_Output.png)
 
 **💡 Observations:**
-> _(To be updated after output review)_
+> _HL Mountain Frame and Mountain-100 Silver variants show the highest MoM spikes (up to +1080% in Jul 2011)_
 
 </details>
 
