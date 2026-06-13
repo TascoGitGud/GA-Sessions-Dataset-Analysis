@@ -15,6 +15,22 @@
 
 This project was built to practice and showcase SQL skills by solving real-world business questions using the **AdventureWorks dataset**.
 
+**Objective:**
+
+- This project uses SQL (Google BigQuery) to analyze sales, production, and purchasing data from the AdventureWorks dataset
+- It answers 8 specific business questions covering sales performance, category growth, top-performing territories, discount efficiency, customer retention, inventory trends, stock-to-sales ratio, and pending purchase orders
+- The goal is to turn raw transactional and operational data into clear, actionable insights for the business
+
+**Main business question:**
+This project uses SQL to analyze sales, inventory, and purchasing data from AdventureWorks to:
+- Identify which product categories, territories, and time periods drive the most sales
+- Evaluate how discounts, customer retention, and stock levels affect overall business performance
+
+**Who is this project for?**
+
+- Data analysts & business analysts who want a reference for writing analytical SQL (CTEs, window functions, cohort analysis)
+- Decision-makers & stakeholders who need quick insights into sales trends, inventory health, and supplier performance
+
 ### Table of Contents
 
 - [1. Overview](#1-overview)
