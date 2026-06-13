@@ -118,14 +118,14 @@ SELECT
   COUNT(SalesOrderID) AS oder_cnt
 FROM sales_in_L12M
 GROUP BY period, product_subcategory
-ORDER BY period DESC, product_subcategory;
+ORDER BY total_sales DESC, product_subcategory;
 ```
 
 **📊 Actual Output:**
 ![Query 1 Output](Images/Query_1_Output.png)
 
-**💡 Observations:**
-> _(To be updated after output review)_
+*💡 Observations:*
+_Road Bikes, Touring Bikes, and Mountain Bikes consistently dominate both revenue and order volume across all months — with Road Bikes peaking at $2.1M in Mar 2014 alone. These 3 subcategories are clearly the core revenue drivers of the business and should be the top priority for inventory planning and sales investment._
 
 </details>
 
