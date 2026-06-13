@@ -12,7 +12,7 @@
 
 _Analyze sales, inventory, and purchasing data to answer 8 business questions and turn raw data into clear insights._
 
-- 🎯 **Business Question:** Which products, territories, and time periods drive the most sales — and where are the risks?
+- 🎯 **Business Question:** Which products, territories, and time periods drive the most sales - and where are the risks?
 - 🏭 **Domain:** Manufacturing & Retail
 - 🛠️ **Tools:** SQL (Google BigQuery)
 
@@ -82,7 +82,7 @@ Below are all 8 queries with their business context, SQL code, output, and obser
 
 **Question: Calc Quantity of items, Sales value & Order quantity by each Subcategory in L12M.**
 
-*Tracking the last 12 months of sales by subcategory helps the business spot which product lines are growing or declining in real time — so inventory and marketing budgets can be adjusted before it's too late.*
+*Tracking the last 12 months of sales by subcategory helps the business spot which product lines are growing or declining in real time - so inventory and marketing budgets can be adjusted before it's too late.*
 
 ```sql
 WITH
@@ -134,7 +134,7 @@ ORDER BY period DESC, product_subcategory;
 
 **Question: Calc % YoY growth rate by SubCategory & release top 3 cat with highest grow rate. Can use metric: quantity_item. Round results to 2 decimal.**
 
-*Identifying the top 3 fastest-growing subcategories gives leadership a clear signal of where demand is heading — useful for production planning and deciding where to invest next.*
+*Identifying the top 3 fastest-growing subcategories gives leadership a clear signal of where demand is heading - useful for production planning and deciding where to invest next.*
 
 ```sql
 WITH
@@ -225,7 +225,7 @@ SELECT * FROM ranking_order_quantity WHERE rk <= 3 ORDER BY yr DESC;
 
 **Question: Calc Total Discount Cost belongs to Seasonal Discount for each SubCategory.**
 
-*Calculating the total cost of seasonal discounts per subcategory lets the finance team evaluate whether the promotions are worth the margin loss — and which categories are eating the most discount budget.*
+*Calculating the total cost of seasonal discounts per subcategory lets the finance team evaluate whether the promotions are worth the margin loss - and which categories are eating the most discount budget.*
 
 ```sql
 WITH
@@ -263,7 +263,7 @@ FROM calculated_discount_cost GROUP BY year, subcate_name ORDER BY year;
 
 **Question: Retention rate of Customer in 2014 with status of Successfully Shipped (Cohort Analysis).**
 
-*Cohort retention shows exactly when customers stop coming back after their first purchase — giving the CRM team a window to step in with re-engagement campaigns before churn becomes permanent.*
+*Cohort retention shows exactly when customers stop coming back after their first purchase - giving the CRM team a window to step in with re-engagement campaigns before churn becomes permanent.*
 
 ```sql
 WITH successful_order AS (
@@ -302,7 +302,7 @@ FROM find_month_diff GROUP BY month_join, CONCAT('M-',month_diff_num) ORDER BY m
 
 **Question: Trend of Stock level & MoM diff % by all product in 2011. If %gr rate is null then 0. Round to 1 decimal.**
 
-*Month-over-month stock changes reveal whether inventory is building up or running low for each product — helping the warehouse team avoid both overstock and stockout situations.*
+*Month-over-month stock changes reveal whether inventory is building up or running low for each product - helping the warehouse team avoid both overstock and stockout situations.*
 
 ```sql
 WITH
@@ -339,7 +339,7 @@ ORDER BY product_name, a.mth DESC;
 
 **Question: Calc Ratio of Stock / Sales in 2011 by product name, by month. Order results by month desc, ratio desc. Round Ratio to 1 decimal.**
 
-*A high stock-to-sales ratio means the company is holding more inventory than it's selling — tying up cash. This query flags which products need faster turnover or reduced production.*
+*A high stock-to-sales ratio means the company is holding more inventory than it's selling - tying up cash. This query flags which products need faster turnover or reduced production.*
 
 ```sql
 WITH 
@@ -379,7 +379,7 @@ ORDER BY 1 DESC, 7 DESC;
 
 *Question: No of order and value at Pending status in 2014.*
 
-**Pending purchase orders represent committed but undelivered spend — tracking their total value helps the procurement team manage cash flow and follow up with suppliers before delays impact production.**
+**Pending purchase orders represent committed but undelivered spend - tracking their total value helps the procurement team manage cash flow and follow up with suppliers before delays impact production.**
 
 ```sql
 SELECT
