@@ -18,6 +18,7 @@ _Analyze sales, inventory, and purchasing data to answer 8 business questions an
 * 🛠️ Tools: SQL (Google BigQuery)
 
 👤 Author: Bạch Minh Nam
+
 📅 Date: 2025-12-07
 
 
