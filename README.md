@@ -94,7 +94,7 @@ GROUP BY period, product_subcategory
 ORDER BY period DESC, product_subcategory;
 ```
 **Actual Output:**
-![Query 1 Output](Images/Query%201%20Output.jpg)
+![Query 1 Output](Images/Query_1_Output.jpg)
 
 </details>
 
@@ -143,7 +143,7 @@ SELECT subcate_name Name, qty_item, prev_qty_item prv_qty, qty_diff
 FROM qty_growth WHERE growth_rank <= 3 ORDER BY qty_diff DESC;
 ```
 **Actual Output:**
-![Query 2 Output](Images/Query%202%20Output.jpg)
+![Query 2 Output](Images/Query_2_Output.jpg)
 
 </details>
 
@@ -173,7 +173,7 @@ WITH
 SELECT * FROM ranking_order_quantity WHERE rk <= 3 ORDER BY yr DESC;
 ```
 **Actual Output:**
-![Query 3 Output](Images/Query%203%20Output.jpg)
+![Query 3 Output](Images/Query_3_Output.jpg)
 
 </details>
 
@@ -205,7 +205,7 @@ SELECT year, subcate_name, SUM(discount_cost) total_cost
 FROM calculated_discount_cost GROUP BY year, subcate_name ORDER BY year;
 ```
 **Actual Output:**
-![Query 4 Output](Images/Query%204%20Output.jpg)
+![Query 4 Output](Images/Query_4_Output.jpg)
 
 </details>
 
@@ -238,7 +238,7 @@ SELECT month_join, CONCAT('M-',month_diff_num) month_diff, COUNT(customer_id) cu
 FROM find_month_diff GROUP BY month_join, CONCAT('M-',month_diff_num) ORDER BY month_join, month_diff;
 ```
 **Actual Output:**
-![Query 5 Output](Images/Query%205%20Output.jpg)
+![Query 5 Output](Images/Query_5_Output.jpg)
 
 </details>
 
@@ -269,7 +269,7 @@ LEFT JOIN sum_stock_qty b ON a.product_name = b.product_name AND a.mth = b.mth +
 ORDER BY product_name, a.mth DESC;
 ```
 **Actual Output:**
-![Query 6 Output](Images/Query%206%20Output.jpg)
+![Query 6 Output](Images/Query_6_Output.jpg)
 
 </details>
 
@@ -303,7 +303,7 @@ LEFT JOIN stock_2011 st ON sa.mth = st.mth AND sa.productID = st.productID
 ORDER BY 1 DESC, 7 DESC;
 ```
 **Actual Output:**
-![Query 7 Output](Images/Query%207%20Output.jpg)
+![Query 7 Output](Images/Query_7_Output.jpg)
 
 </details>
 
@@ -324,7 +324,7 @@ WHERE EXTRACT(YEAR FROM header.ModifiedDate) = 2014 AND Status = 1
 GROUP BY 1,2;
 ```
 **Actual Output:**
-![Query 8 Output](Images/Query%208%20Output.jpg)
+![Query 8 Output](Images/Query_8_Output.jpg)
 
 </details>
 
@@ -337,14 +337,14 @@ GROUP BY 1,2;
 Bicycle_Manufacturer_Performance_Analysis-main/
 ├── Images/                             # Screenshots of each query's result
 │   ├── banner.jpg
-│   ├── Query 1 Output.jpg
-│   ├── Query 2 Output.jpg
-│   ├── Query 3 Output.jpg
-│   ├── Query 4 Output.jpg
-│   ├── Query 5 Output.jpg
-│   ├── Query 6 Output.jpg
-│   ├── Query 7 Output.jpg
-│   └── Query 8 Output.jpg
+│   ├── Query_1_Output.jpg
+│   ├── Query_2_Output.jpg
+│   ├── Query_3_Output.jpg
+│   ├── Query_4_Output.jpg
+│   ├── Query_5_Output.jpg
+│   ├── Query_6_Output.jpg
+│   ├── Query_7_Output.jpg
+│   └── Query_8_Output.jpg
 ├── SQL_Queries/                        # SQL source files for each question
 │   ├── Q1 Sales Volume L12M.sql
 │   ├── Q2 YoY Growth Rate by Category.sql
