@@ -13,11 +13,9 @@
 
 ## 1. Overview
 
-This project was built to practice and showcase SQL skills by solving real-world business questions using the **AdventureWorks dataset**.
-
 **Objective:**
 
-- This project uses SQL (Google BigQuery) to analyze sales, production, and purchasing data from the AdventureWorks dataset
+- This project uses SQL (Google BigQuery) to analyze sales, production, and purchasing data from the **AdventureWorks dataset**
 - It answers 8 specific business questions covering sales performance, category growth, top-performing territories, discount efficiency, customer retention, inventory trends, stock-to-sales ratio, and pending purchase orders
 - The goal is to turn raw transactional and operational data into clear, actionable insights for the business
 
