@@ -35,16 +35,16 @@ To answer the 8 business questions in this project, **8 tables** from the `Sales
 
 > 🔗 **Full Documentation:** For the complete Data Dictionary of the entire AdventureWorks dataset, see the [Official Data Dictionary (PDF)](https://drive.google.com/file/d/1bwwsS3cRJYOg1cvNppc1K_8dQLELN16T/view).
 
-| Schema | Table Name | Columns Used | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Sales** | `SalesOrderHeader` | `SalesOrderID`, `OrderDate`, `CustomerID`, `TerritoryID`, `Status`, `ModifiedDate` | Main table for order dates, territories, customer cohorts, and order status. |
-| **Sales** | `SalesOrderDetail` | `SalesOrderID`, `ProductID`, `OrderQty`, `LineTotal`, `UnitPrice`, `SpecialOfferID` | Detail-level table used to calculate quantities, revenue, and pricing. |
-| **Sales** | `SpecialOffer` | `SpecialOfferID`, `DiscountPct`, `Type` | Used to identify "Seasonal Discount" offers and their discount rates. |
-| **Production** | `Product` | `ProductID`, `Name`, `ProductSubcategoryID` | Connects product IDs to product names and subcategories. |
-| **Production** | `ProductSubcategory` | `ProductSubcategoryID`, `Name` | Groups products into subcategories for growth comparisons. |
-| **Production** | `WorkOrder` | `ProductID`, `StockedQty`, `ModifiedDate` | Provides stock quantities used to track monthly inventory trends. |
-| **Purchasing** | `PurchaseOrderHeader` | `PurchaseOrderID`, `Status`, `TotalDue`, `ModifiedDate` | Used to look at purchase orders with `Status = 1` (Pending). |
-| **Purchasing** | `PurchaseOrderDetail` | `PurchaseOrderID` | Provides line-item detail linked to purchase orders. |
+| Schema | Table Name | Columns Used | Used In | Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| **Sales** | `SalesOrderHeader` | `SalesOrderID`, `OrderDate`, `CustomerID`, `TerritoryID`, `Status`, `ModifiedDate` | Q1, Q2, Q3, Q4, Q5 | Provides order dates, territory IDs, customer IDs, and order status for sales-side queries. |
+| **Sales** | `SalesOrderDetail` | `SalesOrderID`, `ProductID`, `OrderQty`, `LineTotal`, `UnitPrice`, `SpecialOfferID` | Q1, Q2, Q3, Q4, Q7 | Line-item table holding order quantities, revenue, and prices used to calculate sales volume and totals. |
+| **Sales** | `SpecialOffer` | `SpecialOfferID`, `DiscountPct`, `Type` | Q4 | Identifies "Seasonal Discount" offers and their discount percentages to calculate discount cost. |
+| **Production** | `Product` | `ProductID`, `Name`, `ProductSubcategoryID` | Q1, Q2, Q4, Q6, Q7 | Maps product IDs to product names and subcategory IDs. |
+| **Production** | `ProductSubcategory` | `ProductSubcategoryID`, `Name` | Q1, Q2, Q4 | Groups products into subcategories for sales volume and YoY growth comparisons. |
+| **Production** | `WorkOrder` | `ProductID`, `StockedQty`, `ModifiedDate` | Q6, Q7 | Supplies stocked quantities by month, used for stock trend and stock-to-sales ratio. |
+| **Purchasing** | `PurchaseOrderHeader` | `PurchaseOrderID`, `Status`, `TotalDue`, `ModifiedDate` | Q8 | Provides purchase order status and total value to find Pending (`Status = 1`) orders in 2014. |
+| **Purchasing** | `PurchaseOrderDetail` | `PurchaseOrderID` | Q8 | Joined to the purchase order header to count distinct pending purchase orders. |
 
 ---
 
@@ -94,7 +94,7 @@ GROUP BY period, product_subcategory
 ORDER BY period DESC, product_subcategory;
 ```
 **Actual Output:**
-![Query 1 Output](Images/Query_1_Output.png)
+![Query 1 Output](Images/Query_1_Output.jpg)
 
 </details>
 
@@ -143,7 +143,7 @@ SELECT subcate_name Name, qty_item, prev_qty_item prv_qty, qty_diff
 FROM qty_growth WHERE growth_rank <= 3 ORDER BY qty_diff DESC;
 ```
 **Actual Output:**
-![Query 2 Output](Images/Query_2_Output.png)
+![Query 2 Output](Images/Query_2_Output.jpg)
 
 </details>
 
@@ -173,7 +173,7 @@ WITH
 SELECT * FROM ranking_order_quantity WHERE rk <= 3 ORDER BY yr DESC;
 ```
 **Actual Output:**
-![Query 3 Output](Images/Query_3_Output.png)
+![Query 3 Output](Images/Query_3_Output.jpg)
 
 </details>
 
@@ -205,7 +205,7 @@ SELECT year, subcate_name, SUM(discount_cost) total_cost
 FROM calculated_discount_cost GROUP BY year, subcate_name ORDER BY year;
 ```
 **Actual Output:**
-![Query 4 Output](Images/Query_4_Output.png)
+![Query 4 Output](Images/Query_4_Output.jpg)
 
 </details>
 
@@ -238,7 +238,7 @@ SELECT month_join, CONCAT('M-',month_diff_num) month_diff, COUNT(customer_id) cu
 FROM find_month_diff GROUP BY month_join, CONCAT('M-',month_diff_num) ORDER BY month_join, month_diff;
 ```
 **Actual Output:**
-![Query 5 Output](Images/Query_5_Output.png)
+![Query 5 Output](Images/Query_5_Output.jpg)
 
 </details>
 
@@ -269,7 +269,7 @@ LEFT JOIN sum_stock_qty b ON a.product_name = b.product_name AND a.mth = b.mth +
 ORDER BY product_name, a.mth DESC;
 ```
 **Actual Output:**
-![Query 6 Output](Images/Query_6_Output.png)
+![Query 6 Output](Images/Query_6_Output.jpg)
 
 </details>
 
@@ -303,7 +303,7 @@ LEFT JOIN stock_2011 st ON sa.mth = st.mth AND sa.productID = st.productID
 ORDER BY 1 DESC, 7 DESC;
 ```
 **Actual Output:**
-![Query 7 Output](Images/Query_7_Output.png)
+![Query 7 Output](Images/Query_7_Output.jpg)
 
 </details>
 
@@ -324,7 +324,7 @@ WHERE EXTRACT(YEAR FROM header.ModifiedDate) = 2014 AND Status = 1
 GROUP BY 1,2;
 ```
 **Actual Output:**
-![Query 8 Output](Images/Query_8_Output.png)
+![Query 8 Output](Images/Query_8_Output.jpg)
 
 </details>
 
@@ -367,7 +367,7 @@ To run these queries in **Google BigQuery**:
 2. **Load the dataset:** You'll need the `adventureworks2019` dataset. CSV exports of the open-source Microsoft AdventureWorks database are available online. Create a dataset named `adventureworks2019` in your BigQuery project and upload the required tables (`SalesOrderDetail`, `SalesOrderHeader`, `Product`, `WorkOrder`, etc.).
 3. **Clone this repository:**
 ```bash
-[git clone https://github.com/hdangnguyen/Bicycle_Manufacturer_Performance_Analysis.git
-cd Bicycle_Manufacturer_Performance_Analysis](https://github.com/TascoGitGud/Bicycle-Manufacturer-Performance-Analysis-Using-SQL.git)
+git clone https://github.com/hdangnguyen/Bicycle_Manufacturer_Performance_Analysis.git
+cd Bicycle_Manufacturer_Performance_Analysis
 ```
 4. **Run the queries:** Open the BigQuery console, copy each `.sql` file's content from the `SQL_Queries/` folder, and make sure your project context matches the dataset path before running.
